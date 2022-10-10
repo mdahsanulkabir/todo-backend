@@ -18,6 +18,11 @@ const todoSchema = new Schema({
     deadLine: {
         type: Date,
         required: false
+    },
+    status: {
+        type: Boolean,
+        default: 0,
+        required: true
     }
 }, { timestamps: true })
 
