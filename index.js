@@ -7,10 +7,20 @@ const cors = require('cors');
 require('dotenv').config();
 app.use(cors());
 app.use(express.json());
+const todoRoutes = require('./routes/todos')
 
+//global middleware
+app.use((req, res, next) => {
+    console.log(req.path, req.method);
+    next();
+})
+
+
+//routes
+app.use('/api/todos',todoRoutes)
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.json({ msg: "hello" })
 })
 
 //connect to db
